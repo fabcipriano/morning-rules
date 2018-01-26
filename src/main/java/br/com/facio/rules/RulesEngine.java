@@ -44,7 +44,7 @@ public class RulesEngine {
     }
 
     public KieBase deserializeDefaultBase() {
-        long start = System.currentTimeMillis();
+        long start = 0;
         long end = 0;
         KieBase kieBase = null;
         
@@ -58,7 +58,7 @@ public class RulesEngine {
             logger.error("failed to save rule base", e);
         } finally {
             end = System.currentTimeMillis();
-            logger.info("Rule base SERIALIZED in {} ms", (end - start));
+            logger.info("Rule base DESERIALIZED in {} ms", (end - start));
         }
         
         return kieBase;

@@ -1,6 +1,11 @@
 package br.com.facio;
 
 import br.com.facio.rules.RulesEngine;
+import br.com.facio.rules.model.Purchase;
+import java.math.BigDecimal;
+import org.kie.api.KieBase;
+import org.kie.api.runtime.KieSession;
+import org.kie.api.runtime.rule.FactHandle;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -13,7 +18,22 @@ public class App {
     public static void main( String[] args ) {
         logger.info( "Begin Morning Rules..." );
         RulesEngine engine = new RulesEngine();
-        engine.serializeDefaultBase();
+        if (args.length == 0) {
+            logger.info( "--- CREATE AND SERIALIZE" );
+            engine.serializeDefaultBase();
+        } else {
+            logger.info( "--- DESERIALIZE" );
+            KieBase base = null;
+            for (int i = 0; i < 100; i++) {
+                base = engine.deserializeDefaultBase();
+            }
+
+            KieSession newKieSession = base.newKieSession();
+            Purchase firstPurchase = new Purchase(new BigDecimal(666), 1, false);
+
+            FactHandle insert = newKieSession.insert(firstPurchase);
+            newKieSession.fireAllRules();
+        }
         
         logger.info( "End Morning Rules..." );
     }

@@ -1,5 +1,6 @@
 /.checkstyle
 /*.ser
+nbactions.xml
 
 ######################
 # Project Specific
