@@ -18,6 +18,174 @@ then
     $p.setDiscount(0.15);
     System.out.println("Level 2 discount: " + $p.getDiscount());
 end
+rule "purchase is 26 dollars"
+when 
+    $p : Purchase (total == 26) 
+then 
+    $p.setDiscount($p.getDiscount() + 0.03);
+    System.out.println("is 26 discount: " + $p.getDiscount());
+end
+rule "purchase is 27 dollars"
+when 
+    $p : Purchase (total == 27) 
+then 
+    $p.setDiscount($p.getDiscount() + 0.03);
+    System.out.println("is 27 discount: " + $p.getDiscount());
+end
+rule "purchase is 28 dollars"
+when 
+    $p : Purchase (total == 28) 
+then 
+    $p.setDiscount($p.getDiscount() + 0.03);
+    System.out.println("is 28 discount: " + $p.getDiscount());
+end
+rule "purchase is 29 dollars"
+when 
+    $p : Purchase (total == 29) 
+then 
+    $p.setDiscount($p.getDiscount() + 0.03);
+    System.out.println("is 29 discount: " + $p.getDiscount());
+end
+rule "purchase is 30 dollars"
+when 
+    $p : Purchase (total == 30) 
+then 
+    $p.setDiscount($p.getDiscount() + 0.03);
+    System.out.println("is 30 discount: " + $p.getDiscount());
+end
+rule "purchase is 31 dollars"
+when 
+    $p : Purchase (total == 32) 
+then 
+    $p.setDiscount($p.getDiscount() + 0.03);
+    System.out.println("is 32 discount: " + $p.getDiscount());
+end
+rule "purchase is 33 dollars"
+when 
+    $p : Purchase (total == 33) 
+then 
+    $p.setDiscount($p.getDiscount() + 0.03);
+    System.out.println("is 33 discount: " + $p.getDiscount());
+end
+rule "purchase is 34 dollars"
+when 
+    $p : Purchase (total == 34) 
+then 
+    $p.setDiscount($p.getDiscount() + 0.03);
+    System.out.println("is 34 discount: " + $p.getDiscount());
+end
+rule "purchase is 134 dollars"
+when 
+    $p : Purchase (total == 134) 
+then 
+    $p.setDiscount($p.getDiscount() + 0.03);
+    System.out.println("is 134 discount: " + $p.getDiscount());
+end
+rule "purchase is 35 dollars"
+when 
+    $p : Purchase (total == 35) 
+then 
+    $p.setDiscount($p.getDiscount() + 0.03);
+    System.out.println("is 35 discount: " + $p.getDiscount());
+end
+rule "purchase is 36 dollars"
+when 
+    $p : Purchase (total == 36) 
+then 
+    $p.setDiscount($p.getDiscount() + 0.03);
+    System.out.println("is 36 discount: " + $p.getDiscount());
+end
+rule "purchase is 136 dollars"
+when 
+    $p : Purchase (total == 136) 
+then 
+    $p.setDiscount($p.getDiscount() + 0.03);
+    System.out.println("is 136 discount: " + $p.getDiscount());
+end
+rule "purchase is 37 dollars"
+when 
+    $p : Purchase (total == 37) 
+then 
+    $p.setDiscount($p.getDiscount() + 0.03);
+    System.out.println("is 37 discount: " + $p.getDiscount());
+end
+rule "purchase is 38 dollars"
+when 
+    $p : Purchase (total == 38) 
+then 
+    $p.setDiscount($p.getDiscount() + 0.03);
+    System.out.println("is 38 discount: " + $p.getDiscount());
+end
+rule "purchase is 39 dollars"
+when 
+    $p : Purchase (total == 39) 
+then 
+    $p.setDiscount($p.getDiscount() + 0.03);
+    System.out.println("is 39 discount: " + $p.getDiscount());
+end
+rule "purchase is 40 dollars"
+when 
+    $p : Purchase (total == 40) 
+then 
+    $p.setDiscount($p.getDiscount() + 0.03);
+    System.out.println("is 40 discount: " + $p.getDiscount());
+end
+rule "purchase is 41 dollars"
+when 
+    $p : Purchase (total == 41) 
+then 
+    $p.setDiscount($p.getDiscount() + 0.03);
+    System.out.println("is 41 discount: " + $p.getDiscount());
+end
+rule "purchase is 42 dollars"
+when 
+    $p : Purchase (total == 42) 
+then 
+    $p.setDiscount($p.getDiscount() + 0.03);
+    System.out.println("is 42 discount: " + $p.getDiscount());
+end
+rule "purchase is 43 dollars"
+when 
+    $p : Purchase (total == 43) 
+then 
+    $p.setDiscount($p.getDiscount() + 0.03);
+    System.out.println("is 43 discount: " + $p.getDiscount());
+end
+rule "purchase is 44 dollars"
+when 
+    $p : Purchase (total == 44) 
+then 
+    $p.setDiscount($p.getDiscount() + 0.03);
+    System.out.println("is 44 discount: " + $p.getDiscount());
+end
+rule "purchase is 45 dollars"
+when 
+    $p : Purchase (total == 45) 
+then 
+    $p.setDiscount($p.getDiscount() + 0.03);
+    System.out.println("is 45 discount: " + $p.getDiscount());
+end
+rule "purchase is 46 dollars"
+when 
+    $p : Purchase (total == 46) 
+then 
+    $p.setDiscount($p.getDiscount() + 0.03);
+    System.out.println("is 46 discount: " + $p.getDiscount());
+end
+rule "purchase is 47 dollars"
+when 
+    $p : Purchase (total == 47) 
+then 
+    $p.setDiscount($p.getDiscount() + 0.03);
+    System.out.println("is 47 discount: " + $p.getDiscount());
+end
+rule "purchase is 48 dollars"
+when 
+    $p : Purchase (total == 48) 
+then 
+    $p.setDiscount($p.getDiscount() + 0.03);
+    System.out.println("is 48 discount: " + $p.getDiscount());
+end
 
 rule "purcahse contains combo" salience -1
 when 
