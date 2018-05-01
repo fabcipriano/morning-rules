@@ -1,11 +1,9 @@
 package br.com.facio.rules.template;
 
 import br.com.facio.rules.model.Header;
-import br.com.facio.rules.model.Order;
-import org.kie.api.KieBase;
-import org.kie.api.runtime.KieSession;
-import org.kie.api.KieServices;
-import org.kie.api.runtime.KieContainer;
+import java.io.InputStream;
+
+import org.drools.decisiontable.ExternalSpreadsheetCompiler;
 
 /**
  *
@@ -13,20 +11,20 @@ import org.kie.api.runtime.KieContainer;
  */
 public class RuleTemplateExecutor {
 
+    private static final String XLS_FILE = "/templates/data/promocoes.xls";
+    private static final String SIMPLE_TEMPLATE_FILE = "/templates/promocao.drt";
+
     public void run() {
-        KieServices ks = KieServices.Factory.get();
-        KieContainer kc = ks.getKieClasspathContainer();
-        KieSession ksession = kc.newKieSession("TemplatesKS");
-        KieBase kieBase = ksession.getKieBase();
-        System.out.println("base.: " + kieBase.toString());
-        
+        System.out.println("Running ....");
+        final InputStream xlsStream = this.getClass().getResourceAsStream( XLS_FILE );
+        final InputStream templateStream = this.getClass().getResourceAsStream( SIMPLE_TEMPLATE_FILE );
+        ExternalSpreadsheetCompiler converter = new ExternalSpreadsheetCompiler();
+        String dlrContent = converter.compile(xlsStream, templateStream, 2, 2);
+
+        System.out.println("DLR compiled.:\r\n" + dlrContent);
+
         // now create some test data
         Header h = new Header("Brasil", "Minas Gerais", "Uberaba");
-        ksession.insert(new Order(h, true, false, 30));
-//        final List<String> list = new ArrayList<String>();
-//        ksession.setGlobal("list", list);
-
-        ksession.fireAllRules();
     }
 
 }
