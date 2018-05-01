@@ -1,0 +1,33 @@
+template header
+Pais
+Estado
+Cidade
+DebitoAutomatico
+Velocidade
+ModemDoCliente
+Preco
+Desconto
+
+package br.com.facio.rule.template;
+
+import br.com.facio.rules.model.Order;
+import br.com.facio.rules.model.Header;
+
+function boolean isTrue(String value) {
+    return "Y".equals(value);
+}
+
+function 
+
+template "promotion"
+
+rule "Pomotion Rule Row Id @{row.rowNumber}"
+when
+    $header: Header(country == @{Pais} && state == @{Estado} && city == @{Cidade});
+    $order: Order(header == $header, modemOwner == isTrue(@{DebitoAutomatico}));
+then
+    System.out.println( "Order " + $order + "Velocidade : " + @{Velocidade} );
+    $order.setDiscount(@{Desconto});
+    $order.calculateAndSetPrice(@{Preco});
+end
+end template

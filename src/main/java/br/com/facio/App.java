@@ -2,6 +2,7 @@ package br.com.facio;
 
 import br.com.facio.rules.RulesEngine;
 import br.com.facio.rules.model.Purchase;
+import br.com.facio.rules.template.RuleTemplateExecutor;
 import java.math.BigDecimal;
 import org.kie.api.KieBase;
 import org.kie.api.runtime.KieSession;
@@ -16,7 +17,15 @@ public class App {
     private static final Logger logger = LoggerFactory.getLogger(RulesEngine.class);
 
     public static void main( String[] args ) {
-        logger.info( "Begin Morning Rules..." );
+        logger.info( "Begin Morning Rules testing Template..." );
+        RuleTemplateExecutor template = new RuleTemplateExecutor();
+        
+        template.run();
+        
+        logger.info( "End Morning Rules..." );
+    }
+
+    private static void serializeRules(String[] args) {
         RulesEngine engine = new RulesEngine();
         if (args.length == 0) {
             logger.info( "--- CREATE AND SERIALIZE" );
@@ -34,7 +43,5 @@ public class App {
             FactHandle insert = newKieSession.insert(firstPurchase);
             newKieSession.fireAllRules();
         }
-        
-        logger.info( "End Morning Rules..." );
     }
 }

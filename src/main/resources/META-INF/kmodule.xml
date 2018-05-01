@@ -1,4 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<kmodule xmlns="http://jboss.org/kie/6.0.0/kmodule"/>
+<kmodule xmlns="http://jboss.org/kie/6.0.0/kmodule">
+    <kbase name="TemplatesKB" default="false" packages="br.com.facio.templates">
+        <ruleTemplate dtable="/home/fabiano/dev/morning-rules/src/main/resources/templates/data/promocoes.xlsx"
+                      template="/home/fabiano/dev/morning-rules/src/main/resources/templates/promocao.drt"
+                      row="2" col="2"/>
+        <ksession name="TemplatesKS"/>
+    </kbase>
+</kmodule>
 
