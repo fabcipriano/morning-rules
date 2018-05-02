@@ -1,6 +1,7 @@
 package br.com.facio.rules.template;
 
 import br.com.facio.rules.model.Header;
+import br.com.facio.rules.model.Order;
 import java.io.InputStream;
 import java.io.StringReader;
 
@@ -26,21 +27,25 @@ public class RuleTemplateExecutor {
 
     public void run() {
         System.out.println("Running ....");
+        String dlrContent = makeDRLContentFromTemplate();
+
+        System.out.println("DLR compiled.:\r\n" + dlrContent);
+        System.out.println(" ====== Running Template Rules ====== ");
+        
+        Header h = new Header("Brasil", "Minas Gerais", "Uberaba");
+        Order o = new Order(h, true, true, 30);
+        KieSession session = loadBaseAndReturnSession(dlrContent);
+        session.insert(o);
+        session.fireAllRules();
+        System.out.println(" ====== End ====== ");
+    }
+
+    private String makeDRLContentFromTemplate() {
         final InputStream xlsStream = this.getClass().getResourceAsStream(XLS_FILE);
         final InputStream templateStream = this.getClass().getResourceAsStream(SIMPLE_TEMPLATE_FILE);
         ExternalSpreadsheetCompiler converter = new ExternalSpreadsheetCompiler();
         String dlrContent = converter.compile(xlsStream, templateStream, 2, 2);
-
-        System.out.println("DLR compiled.:\r\n" + dlrContent);
-
-        // now create some test data
-        System.out.println(" ====== Running Template Rules ====== ");
-        
-        Header h = new Header("Brasil", "Minas Gerais", "Uberaba");        
-        KieSession session = loadBaseAndReturnSession(dlrContent);
-        session.insert(h);
-        session.fireAllRules();
-        System.out.println(" ====== End ====== ");
+        return dlrContent;
     }
 
     private KieSession loadBaseAndReturnSession(String drl) {

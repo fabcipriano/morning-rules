@@ -14,17 +14,21 @@ import br.com.facio.rules.model.Order;
 import br.com.facio.rules.model.Header;
 
 function boolean isTrue(String value) {
-    return "Y".equals(value);
+    boolean result = "Y".equals(value);
+    System.out.println("value.: " + value + ", result.: " + result);
+    return result;
 }
 
 template "promotion"
 
 rule "Pomotion Rule Row Id @{row.rowNumber}"
 when
-    $header: Header(country == "@{Pais}" && state == "@{Estado}" && city == "@{Cidade}");
-    $order: Order(header == $header, modemOwner == isTrue("@{DebitoAutomatico}"));
+    $order: Order(automaticDebit == isTrue("@{DebitoAutomatico}"), modemOwner == isTrue("@{ModemDoCliente}"), $header: header);
+    Header( country == "@{Pais}" && state == "@{Estado}" && city == "@{Cidade}" ) from $header;
+
 then
-    System.out.println( "Order " + $order + "Velocidade : @{Velocidade}" );
+    System.out.println( "Order.:" + $order + ", Velocidade : @{Velocidade}" );
+    System.out.println( "Header.:" + $header );
     $order.setDiscount(@{Desconto});
     $order.calculateAndSetPrice(@{Preco});
 end

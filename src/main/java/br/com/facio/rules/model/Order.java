@@ -69,7 +69,7 @@ public class Order {
     }
     
     public void calculateAndSetPrice(double basePrice) {
-        price = (basePrice + basePrice*velocity) * (1-discount);
+        price = (basePrice + velocity) * (1-discount);
         System.out.println("Price for base price.: " + basePrice + " and discount " + discount + ", is " + price);
     }
 
